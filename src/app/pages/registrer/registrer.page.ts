@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './registrer.page.html',
   styleUrls: ['./registrer.page.scss'],
 })
-export class RegistrerPage implements OnInit {
+export class RegistrerPage  {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

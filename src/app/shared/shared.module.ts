@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { StorageService } from './services/storage/storage.service';
+import { ButtonComponent } from './components/button/button.component';
 
 const Componets = [
   InputComponent,
-  AvatarComponent
+  AvatarComponent,
+  ButtonComponent
 ];
 const Modules = [
   CommonModule,

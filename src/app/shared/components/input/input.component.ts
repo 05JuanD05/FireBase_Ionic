@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
+type ButtonType = "text" | "number" | "tel" | "email" | "password";
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent  {
 
+  @Input() label: string = "";
+  @Input() control = new FormControl();
+  @Input() type: ButtonType = "text";
+
   constructor() { }
 
 
+  public setValue(event: any){
+    this.control.setValue(event.target.value);
+  }
 }

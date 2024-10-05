@@ -6,8 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
-    SharedModule,
-    RegistrerPageRoutingModule
+    RegistrerPageRoutingModule,
+    SharedModule
   ],
   declarations: [RegistrerPage]
 })
