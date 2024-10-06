@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-content>
-      <form >
+      <form [formGroup]="loginform" (ngSubmit)="dologin()">
        <ion-grid>
 
         <ion-row>
@@ -17,7 +17,7 @@
 
         <ion-row>
           <ion-col>
-              <app-button value ="Login"></app-button>
+              <app-button  [disable]="loginform.invalid"  value ="Login"></app-button>
           </ion-col>
         </ion-row>
 
