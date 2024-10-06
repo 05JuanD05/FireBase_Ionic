@@ -19,13 +19,23 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <app-input [control]="age" label="Age" type="number"></app-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <app-input [control]="email" label="Email" type="email"></app-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
+            <app-input [control]="phone" label="PhoneNumber" type="tel"></app-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <app-input [control]="password" label="Password" [type]="passwordType"></app-input>
-            <ion-button (click)="togglePassword()" class="small-button">
+            <ion-button [disabled]="registerForm.invalid" (click)="togglePassword()" class="small-button">
               <ion-icon [name]="passwordType === 'text' ? 'eye-off' : 'eye'"></ion-icon>
             </ion-button>
           </ion-col>
@@ -39,3 +49,4 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+

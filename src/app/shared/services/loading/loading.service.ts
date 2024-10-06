@@ -9,7 +9,11 @@ export class LoadingService {
   constructor(private readonly loadControl: LoadingController) { }
 
   public async show(){
-    const load = await this.loadControl.create({});
+    const load = await this.loadControl.create({
+      message:'Cargando...',
+      spinner:'bubbles',
+      duration: 5000
+    });
     await load.present();
   }
 
