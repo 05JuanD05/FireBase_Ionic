@@ -15,6 +15,7 @@ export class FirebaseAdminModule { }
 export function initializeFirebaseAdmin(){
   admin.initializeApp({
     credential: admin.credential.cert("path/to/serviceAccountKey.json"),
-    databaseURL: ''
-  })
+    databaseURL: 'https://console.firebase.google.com/u/0/project/taller-ionic-ccdcf/firestore/databases/-default-/data?hl=es-419'
+  });
+  return admin.firestore();
 }
