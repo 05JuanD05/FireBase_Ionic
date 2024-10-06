@@ -1,35 +1,35 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-content>
-      <form>
+      <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
         <ion-row>
           <ion-col>
-            <app-avatar></app-avatar>
+            <app-avatar [control]="image"></app-avatar>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <app-input label="Name" type="text"></app-input>
+            <app-input [control]="name" label="Name" type="text"></app-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <app-input label="LastName" type="text"></app-input>
+            <app-input [control]="lastName" label="LastName" type="text"></app-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <app-input label="Email" type="email"></app-input>
+            <app-input [control]="email" label="Email" type="email"></app-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <app-input label="Password" type="number"></app-input>
+            <app-input [control]="password" label="Password" type="number"></app-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <app-button value="Register">Register</app-button>
+            <app-button [disable]="registerForm.invalid" value="Register" type="submit">Register</app-button>
           </ion-col>
         </ion-row>
       </form>

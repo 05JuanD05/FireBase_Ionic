@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './components/input/input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { StorageService } from './services/storage/storage.service';
 import { ButtonComponent } from './components/button/button.component';
+import { AuthService } from './services/auth/auth.service';
+import { LoadingService } from './controllers/loading/loading.service';
 
 const Componets = [
   InputComponent,
@@ -15,19 +17,24 @@ const Componets = [
 const Modules = [
   CommonModule,
   FormsModule,
-  IonicModule
+  IonicModule,
+  ReactiveFormsModule
 ];
 
 const Providers = [
   StorageService,
+  AuthService
 ];
 
+const Controles = [
+  LoadingService
+]
 @NgModule({
   declarations: [... Componets],
   imports: [
     ... Modules,
   ],
-  providers: [... Providers],
+  providers: [... Providers, ... Controles],
   exports: [... Componets, ... Modules]
 })
 export class SharedModule { }
