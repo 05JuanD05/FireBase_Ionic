@@ -6,6 +6,13 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },
+
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -19,8 +26,12 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> VistaPrincipal
 ];
 
 @NgModule({
