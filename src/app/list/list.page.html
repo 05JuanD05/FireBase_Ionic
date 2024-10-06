@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>list</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <!-- Lista con una carta para actualizar -->
+  <ion-list>
+    <ion-card (click)="goToUpdate()">
+      <ion-card-header>
+        <ion-card-title>Update</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Haz clic aquí para actualizar las tareas.
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">list</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Botón Logout -->
+  <ion-button expand="full" color="danger" (click)="logout()">
+    Logout
+  </ion-button>
 </ion-content>

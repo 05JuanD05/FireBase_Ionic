@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
+  
+  goToUpdate(){
+    this.navCtrl.navigateForward('/Update');
+  }
+
+  logout() {
+    this.navCtrl.navigateRoot('/login');
+  }
 
   ngOnInit() {
   }
