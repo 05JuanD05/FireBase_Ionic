@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { LoadingService } from 'src/app/shared/controllers/loading/loading.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
@@ -15,8 +16,9 @@ export class RegistrerPage  {
   public email!: FormControl;
   public password!: FormControl;
   public registerForm!: FormGroup;
+  public passwordType: 'text' | 'password' = 'password'; // Inicialmente oculta
 
-  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService) {
+  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService, private readonly navControl: NavController) {
     this.initForm();
   }
 
@@ -28,10 +30,15 @@ export class RegistrerPage  {
       const response = await this.authServer.registrar(email, password);
       console.log("", response)
       await this.loadService.dismiss();
+      this.navControl.navigateForward("");
     } catch (error) {
       await this.loadService.dismiss();
       console.error(error);
     }
+  }
+
+  public togglePassword(){
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
   }
 
   private initForm(){

@@ -1,0 +1,12 @@
+ion-button {
+  --background: #4caf50; /* Verde personalizado */
+  --border-radius: 12px;
+  --padding: 12px 24px;
+  --color: white; /* Color del texto */
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --transition: background-color 0.3s ease;
+}
+
+ion-button:hover {
+  --background: #45a049; /* Cambia el fondo al pasar el mouse */
+}

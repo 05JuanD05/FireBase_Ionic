@@ -1,0 +1,60 @@
+ion-card {
+  --background: #e0f7fa; /* Azul claro */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
+
+
+ion-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-row {
+  margin-bottom: 12px;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+}
+
+app-avatar {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+app-input {
+  width: 100%;
+}
+
+app-button {
+  --background: #3880ff; /* Cambia el color según tu preferencia */
+  --border-radius: 8px;
+  --padding: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  ion-card {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  ion-col {
+    max-width: 500px;
+  }
+}
+
+.small-button {
+  --background: #4caf50;
+  --color: white;
+  --padding: 4px 6px;
+  --font-size: 12px;
+}
