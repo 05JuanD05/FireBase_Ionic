@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate:[authGuard]
   },
-  
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
-
-
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -26,12 +25,6 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-<<<<<<< HEAD
-
-
-=======
-  
->>>>>>> VistaPrincipal
 ];
 
 @NgModule({
