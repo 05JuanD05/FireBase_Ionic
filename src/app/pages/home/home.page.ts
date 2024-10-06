@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importaciones correctas
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-home',
@@ -7,27 +7,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importac
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  taskForm: FormGroup;  // Definir el FormGroup
+  taskForm: FormGroup;  
   minDate: string;
+  taskList: any[] = [];  
 
   constructor(private formBuilder: FormBuilder) {
     const today = new Date();
-    this.minDate = today.toISOString().split('T')[0];  // Inicializar la fecha mínima
+    this.minDate = today.toISOString().split('T')[0];  
 
-    // Inicializar el formulario con validaciones
+    
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       date: ['', Validators.required],
       userId: ['', Validators.required],
-      done: [false]  // Valor por defecto false para el campo done
+      done: [false]  
     });
   }
 
   onSubmit() {
     if (this.taskForm.valid) {
       const taskData = this.taskForm.value;
-      console.log('Task data:', taskData);  // Aquí puedes manejar la información de la tarea (enviar a backend, etc.)
+      this.taskList.push(taskData);  
+      this.taskForm.reset({ done: false });  
+      console.log('Task data:', taskData);
     }
   }
 }

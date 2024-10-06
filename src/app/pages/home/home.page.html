@@ -39,7 +39,21 @@
   
         <ion-button type="submit" [disabled]="taskForm.invalid">Submit</ion-button>
       </form>
-    </ion-card>   
+    </ion-card>  
+    
+     <ion-title size="large">Tasks List</ion-title>
+
+  <ion-list>
+    <ion-item *ngFor="let task of taskList">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <p>Date: {{ task.date }}</p>
+        <p>User ID: {{ task.userId }}</p>
+        <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
   
   </ion-content>
   
