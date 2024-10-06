@@ -1,15 +1,16 @@
 <ion-content [fullscreen]="true">
 
-    <ion-title size="large"> Task </ion-title>
-    
-    <ion-card (click)="goToList()">
+   
+     <ion-card (click)="goToList()">
         <ion-card-header>
           <ion-card-title>Configuración</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          Haz clic aquí para acceder a la configuración y ver la lista de tareas.
+          Haz clic aquí para actualizar tus datos o cerrar sesion.
         </ion-card-content>
       </ion-card>
+
+      <ion-title size="large"> Task </ion-title>
   
     <ion-card>
       <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">

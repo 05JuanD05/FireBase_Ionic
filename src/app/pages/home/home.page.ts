@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { NavController } from '@ionic/angular'; // Importar NavController
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomePage {
   taskForm: FormGroup;  
   minDate: string;
-  taskList: any[] = [];  
+  taskList: any[] = [];  // Aquí se almacenarán las tareas
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {  // Agregar NavController al constructor
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];  
 
-    
+    // Inicializar el formulario con validaciones
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -28,9 +29,13 @@ export class HomePage {
   onSubmit() {
     if (this.taskForm.valid) {
       const taskData = this.taskForm.value;
-      this.taskList.push(taskData);  
-      this.taskForm.reset({ done: false });  
+      this.taskList.push(taskData);  // Agregar la tarea a la lista
+      this.taskForm.reset({ done: false });  // Reiniciar el formulario
       console.log('Task data:', taskData);
     }
+  }
+
+  goToList() {
+    this.navCtrl.navigateForward('/list');  // Navegar a la página de lista
   }
 }
