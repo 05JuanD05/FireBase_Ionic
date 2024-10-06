@@ -14,10 +14,14 @@
             <app-input [control]="password" type="password" label="Password"></app-input>
           </ion-col>
         </ion-row>
-
         <ion-row>
           <ion-col>
-              <app-button  [disable]="loginform.invalid"  value ="Login"></app-button>
+            <a [routerLink]="['/registrer']"> Registrar</a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <app-button  type="submit" [disable]="loginform.invalid"  value ="Login"></app-button>
           </ion-col>
         </ion-row>
 
