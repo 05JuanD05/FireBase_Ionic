@@ -12,7 +12,7 @@ export class StorageService {
     try{
       const name = `users/${Date.now()}-${file.name}`;
       const uploaded = await this.JDStorage.upload(name, file);
-      const url = uploaded.ref.getDownloadURL();
+      const url = await uploaded.ref.getDownloadURL();
       return url;
     }catch(error){
       throw error;

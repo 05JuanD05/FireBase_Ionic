@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 type colorButtonType = "success" | "danger" | "warning" | "secondary" | "primary";
 type ButtonType = "button" | "submit";

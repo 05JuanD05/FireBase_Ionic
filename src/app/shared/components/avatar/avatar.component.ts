@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { StorageService } from '../../services/storage/storage.service';
-import { LoadingService } from '../../controllers/loading/loading.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-avatar',

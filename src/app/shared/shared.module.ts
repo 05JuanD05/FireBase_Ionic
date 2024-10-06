@@ -7,7 +7,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { StorageService } from './services/storage/storage.service';
 import { ButtonComponent } from './components/button/button.component';
 import { AuthService } from './services/auth/auth.service';
-import { LoadingService } from './controllers/loading/loading.service';
+import { LoadingService } from './services/loading/loading.service';
 
 const Componets = [
   InputComponent,
