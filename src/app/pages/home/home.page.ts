@@ -69,6 +69,14 @@ export class HomePage {
     this.editIndex = index;  // Guardar el índice de la tarea a editar
   }
 
+  // Función para eliminar tareas
+  onDeleteTask(index: number) {
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskList.splice(index, 1);  // Elimina la tarea de la lista
+      localStorage.setItem('taskList', JSON.stringify(this.taskList));  // Actualiza localStorage
+    }
+  }
+
   goToList() {
     this.navCtrl.navigateForward('/list');
   }

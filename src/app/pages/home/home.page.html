@@ -42,9 +42,11 @@
         <p>User ID: {{ task.userId }}</p>
         <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
       </ion-label>
-      <ion-button (click)="onEditTask(i)">Edit</ion-button> <!-- Botón para editar -->
+      <ion-button (click)="onEditTask(i)">Edit</ion-button>  <!-- Botón de editar -->
+      <ion-button color="danger" (click)="onDeleteTask(i)">Delete</ion-button>  <!-- Botón de eliminar -->
     </ion-item>
   </ion-list>
+  
   
   
 </ion-content>
