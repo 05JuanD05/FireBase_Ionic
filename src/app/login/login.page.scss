@@ -1,12 +1,117 @@
-ion-content{
-    ion-background-color: #e1eaf9 !important;
-}
-
-ion-header{
-    position: absolute;
-}
-
-ion-toolbar{
-    ion-background-color: transparent;
-    opacity: 0;
-}
+// General styles for the whole page
+ion-content {
+    background-color: #f2f2f2; // Fondo suave
+    color: #282828; // Texto oscuro
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  ion-card {
+    background-color: #ffcc00; // Fondo de tarjeta amarillo similar a los tonos Saiyajin
+    border-radius: 12px;
+    border: 2px solid #ff4500; // Borde naranja como el uniforme de Goku
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Sombra estilo Dragon Ball Z
+  }
+  
+  ion-card-content {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  // Typography inspired by Dragon Ball Z
+  h1, ion-title {
+    font-family: 'Saiyan Sans', sans-serif; // Puedes agregar una fuente personalizada
+    font-size: 2rem;
+    color: #ff4500; // Naranja del uniforme de Goku
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #000; // Sombra como en el título de Dragon Ball Z
+  }
+  
+  a {
+    color: #ff4500;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    color: #282828;
+  }
+  
+  ion-row {
+    margin: 10px 0;
+  }
+  
+  app-input {
+    ion-input {
+      background-color: #ffffff;
+      border: 2px solid #ff4500;
+      border-radius: 8px;
+      padding: 10px;
+      color: #282828;
+    }
+  
+    ion-label {
+      color: #ff4500;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  }
+  
+  app-button {
+    background-color: #ffffff; // Color azul de la energía Ki
+    color: #fff;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 2px solid #282828;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px #000;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  app-button:hover {
+    background-color: #ff4500; // Cambia a naranja cuando el botón es hover
+    transform: scale(1.05); // Leve agrandamiento
+  }
+  
+  app-button[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
+  // Hover effects to give a power-up feeling
+  ion-card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  }
+  
+  ion-card-title {
+    color: #ff4500;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px #000;
+  }
+  
+  // Custom animation for the card
+  @keyframes powerUp {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  ion-card {
+    animation: powerUp 3s infinite alternate;
+  }
