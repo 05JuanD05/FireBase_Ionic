@@ -1,13 +1,13 @@
 ion-content {
-  --background: #fdbb30; /* Naranja brillante, como el traje de Goku */
+  --background: #fdbb30; /* Fondo naranja brillante */
 }
 
 ion-card {
   --ion-card-background-color: #fff;
-  --ion-text-color: #000; /* Texto negro */
+  --ion-text-color: #000; /* Texto negro en las tarjetas */
   border: 3px solid #f08c00; /* Borde naranja oscuro */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra oscura para dar efecto "power up" */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra oscura */
 }
 
 ion-card-title {
@@ -23,7 +23,7 @@ ion-card-content {
 }
 
 ion-item {
-  --background: #4b4cff; /* Azul Saiyan (como el aura del Super Saiyan Blue) */
+  --background: #4b4cff; /* Azul Saiyan */
   color: white;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -35,7 +35,7 @@ ion-input {
 }
 
 ion-button {
-  --background: #ff4b00; /* Botón naranja brillante */
+  --background: #ff4b00; /* Naranja brillante */
   --color: white;
   --border-radius: 8px;
   font-weight: bold;
@@ -49,4 +49,10 @@ ion-button:focus, ion-button:hover {
 
 ion-list {
   margin: 20px;
+}
+
+/* Cambiar el color del texto de las tareas a blanco */
+.task-item ion-label h2,
+.task-item ion-label p {
+  color: white; /* Color blanco para la lista de tareas */
 }
