@@ -34,7 +34,7 @@ export class RegistrerPage  {
       console.log(this.registerForm.value);
       const { email, password, image } = this.registerForm.value;
       const userCreden: any = await this.authServer.registrar(email, password);
-      const userId = userCreden.user?.uid;
+      const userId = userCreden.user?.uid; // Obtiene el ID del usuario desde FireBase
 
       if (!userId) {
         throw new Error('Error al obtener el Id del usuario.');
@@ -42,12 +42,12 @@ export class RegistrerPage  {
 
       let imageUrl = "";
       if (image) {
-        imageUrl = await this.storaService.uploadFileyGetUrl(image); // Para obtener la Url de forma segura
+        imageUrl = await this.storaService.uploadFileyGetUrl(image); // Para obtener la Url
       } else {
         console.warn('Imagen no seleccionada por el usuario registrado');
       }
 
-      await this.registerUsers(userId, email, imageUrl); // Aqui se manda los 3 datos al la BD de FireStore
+      await this.registerUsers(userId, email, imageUrl); // Aqui se registra los 3 en el FireStore
 
       this.toastMsj.mesajeToast('Registro Exitoso, puede ir a loguearse.', 'success');
       await this.loadService.dismiss();
@@ -69,9 +69,10 @@ export class RegistrerPage  {
   }
 
   public togglePassword(){
-    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password'; //Esto es para mostrar y ocultar la password
   }
 
+  // Formulario con validaciones con una adicional para el email
   private initForm(){
     this.image = new FormControl("");
     this.name = new FormControl("", [Validators.required]);
@@ -91,6 +92,7 @@ export class RegistrerPage  {
     });
   }
 
+  // Registro hacia la BD de FireStore luego de registrar en el Authentication
   private async registerUsers(userId: string, email: string, imageFile: string) {
     try {
       await this.fires.collection('users').doc(userId).set({
