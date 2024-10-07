@@ -34,7 +34,7 @@
   <ion-title size="large">Tasks List</ion-title>
 
   <ion-list>
-    <ion-item *ngFor="let task of taskList" class="task-item">
+    <ion-item *ngFor="let task of taskList; let i = index" class="task-item">
       <ion-label>
         <h2>{{ task.title }}</h2>
         <p>{{ task.description }}</p>
@@ -42,7 +42,9 @@
         <p>User ID: {{ task.userId }}</p>
         <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
       </ion-label>
+      <ion-button (click)="onEditTask(i)">Edit</ion-button> <!-- Botón para editar -->
     </ion-item>
   </ion-list>
-
+  
+  
 </ion-content>
