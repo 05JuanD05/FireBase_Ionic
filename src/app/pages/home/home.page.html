@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true">
+  
+     <ion-card (click)="goToList()">
+        <ion-card-header>
+          <ion-card-title>Configuration</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Haz clic aquí para actualizar tus datos o cerrar sesion.
+        </ion-card-content>
+      </ion-card>
+
+      <ion-title size="large"> Task </ion-title>
+
+    <ion-card>
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+
+
+          <ion-item>
+            <ion-input label="Title" formControlName="title" type="text" required></ion-input>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-input label="Description" formControlName="description" type="text" required></ion-input>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-input label="Date" formControlName="date" type="date" [min]="minDate" required></ion-input>
+          </ion-item>
+
+
+
+          <ion-item>
+            <ion-input label="UserID" formControlName="userId" type="number" required></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label>Done</ion-label>
+            <ion-checkbox formControlName="done"></ion-checkbox>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-button type="submit" [disabled]="taskForm.invalid">Submit</ion-button>
+      </form>
+    </ion-card>
+
+     <ion-title size="large">Tasks List</ion-title>
+
+  <ion-list>
+    <ion-item *ngFor="let task of taskList">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <p>Date: {{ task.date }}</p>
+        <p>User ID: {{ task.userId }}</p>
+        <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  </ion-content>
+

@@ -3,7 +3,6 @@
     <ion-card-content>
       <form [formGroup]="loginform" (ngSubmit)="dologin()">
        <ion-grid>
-
         <ion-row>
           <ion-col>
             <app-input [control]="email" type="email" label="Email"></app-input>
@@ -24,7 +23,6 @@
               <app-button  type="submit" [disable]="loginform.invalid"  value ="Login"></app-button>
           </ion-col>
         </ion-row>
-
        </ion-grid>
       </form>
     </ion-card-content>

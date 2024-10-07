@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { __values } from 'tslib';
 import { AuthService } from '../shared/services/auth/auth.service';
-import { catchError } from 'rxjs';
 import { NavController } from '@ionic/angular';
-import { LoadingService } from '../shared/controllers/loading/loading.service';
+import { LoadingService } from '../shared/services/loading/loading.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 public email!: FormControl;
 public password!: FormControl;
 public loginform!: FormGroup;
@@ -21,9 +20,6 @@ public loginform!: FormGroup;
      NavController, private readonly loadingSrv: LoadingService) {
     this.initForm();
    }
-  
-  ngOnInit() {
-  }
 
   public async dologin(){
     try{
