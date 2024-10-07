@@ -12,7 +12,7 @@ export class HomePage {
   minDate: string;
   taskList: any[] = [];
   userCounter: number = 1;
-  editIndex: number | null = null;  // Para manejar el índice de la tarea a editar
+  editIndex: number | null = null;  // To handle the index of the task being edited
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {
     const today = new Date();
@@ -37,43 +37,46 @@ export class HomePage {
       const taskData = this.taskForm.value;
 
       if (this.editIndex !== null) {
-        // Actualizar la tarea existente
-        this.taskList[this.editIndex] = { ...taskData, userId: this.taskList[this.editIndex].userId };
-        this.editIndex = null;  // Limpiar el índice de edición después de actualizar
+        // Show confirmation message before applying changes
+        const confirmEdit = window.confirm('Are you sure you want to edit this task?');
+        if (confirmEdit) {
+          // If user confirms, apply changes
+          this.taskList[this.editIndex] = { ...taskData, userId: this.taskList[this.editIndex].userId };
+          this.editIndex = null;  // Clear the edit index after updating
+        }
       } else {
-        // Crear una nueva tarea
+        // Create a new task if not in edit mode
         taskData.userId = `user-${this.userCounter}`;
         this.userCounter++;
         localStorage.setItem('userCounter', this.userCounter.toString());
 
-        // Agregar la tarea a la lista
+        // Add the new task to the list
         this.taskList.push(taskData);
       }
 
-      // Guardar la lista actualizada en localStorage
+      // Save the updated list in localStorage
       localStorage.setItem('taskList', JSON.stringify(this.taskList));
 
-      // Reiniciar el formulario
+      // Reset the form
       this.taskForm.reset({ done: false });
     }
   }
 
   onEditTask(index: number) {
-    const task = this.taskList[index]; // Obtener la tarea a editar
+    const task = this.taskList[index]; // Get the task to edit
     this.taskForm.setValue({
       title: task.title,
       description: task.description,
       date: task.date,
       done: task.done
     });
-    this.editIndex = index;  // Guardar el índice de la tarea a editar
+    this.editIndex = index;  // Save the index of the task to edit
   }
 
-  // Función para eliminar tareas
   onDeleteTask(index: number) {
     if (confirm('Are you sure you want to delete this task?')) {
-      this.taskList.splice(index, 1);  // Elimina la tarea de la lista
-      localStorage.setItem('taskList', JSON.stringify(this.taskList));  // Actualiza localStorage
+      this.taskList.splice(index, 1);  // Remove the task from the list
+      localStorage.setItem('taskList', JSON.stringify(this.taskList));  // Update localStorage
     }
   }
 
