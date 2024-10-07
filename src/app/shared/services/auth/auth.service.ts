@@ -23,4 +23,17 @@ export class AuthService {
       .catch((err) => reject(err));
     })
   }
+
+  public isAuth(){
+    return new Promise((resolve, reject) => {
+      this.jdAuth.currentUser.then((res) => {
+        if(res?.uid){
+          resolve(true);
+        }else {
+          resolve(false);
+        }
+      })
+    })
+  }
+
 }
