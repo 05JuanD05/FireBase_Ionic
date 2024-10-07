@@ -34,49 +34,41 @@ export class RegistrerPage  {
       console.log(this.registerForm.value);
       const { email, password, image } = this.registerForm.value;
 
-      // Registrar al usuario primero
-      const userCreden = await this.auth.createUserWithEmailAndPassword(email, password);
+      const userCreden: any = await this.authServer.registrar(email, password);
       const userId = userCreden.user?.uid;
 
-      // Subir la imagen solo si está presente
+      if (!userId) {
+        throw new Error('Error al obtener el Id del usuario.');
+      }
+
       let imageUrl = "";
       if (image) {
-        imageUrl = await this.storaService.uploadFileyGetUrl(image);
+        imageUrl = await this.storaService.uploadFileyGetUrl(image); // Para obtener la Url de forma segura
       } else {
         console.warn('Imagen no seleccionada por el usuario registrado');
       }
 
-      // Guardar datos del usuario en Firestore
-      await this.fires.collection('users').doc(userId).set({
-        email,
-        image: imageUrl,
-        name: this.registerForm.get('name')?.value,
-        lastName: this.registerForm.get('lastName')?.value,
-        age: this.registerForm.get('age')?.value,
-        phone: this.registerForm.get('phone')?.value,
-      });
+      await this.registerUsers(userId, email, imageUrl); // Aqui se manda esos 3 datos al FireStore
 
-      this.toastMsj.mesajeToast('Registro Exito, puede ir a loguearse.', 'success');
+      this.toastMsj.mesajeToast('Registro Exitoso, puede ir a loguearse.', 'success');
       await this.loadService.dismiss();
-      this.navControl.navigateForward("");
+      this.navControl.navigateForward("/login");
     } catch (error) {
       await this.loadService.dismiss();
 
-      // Verificación de tipo de error
       if (error instanceof Error) {
-        // Aquí puedes acceder a 'error.message' y otras propiedades
         if (error.message.includes('email already in use')) {
           this.toastMsj.mesajeToast('El correo ya está en uso.', 'danger');
         } else {
           this.toastMsj.mesajeToast('Error al registrarse: ' + error.message, 'danger');
         }
       } else {
-        // Manejo de errores que no son de tipo Error
         this.toastMsj.mesajeToast('Error desconocido al registrarse.', 'danger');
       }
       console.error('Error al registrarse:', error);
     }
   }
+
 
 
 
@@ -116,8 +108,7 @@ export class RegistrerPage  {
       console.log('User registrado en Firestore');
     } catch (error) {
       console.error('Error al registrar al user en Firestore:', error);
-      throw error; // Lanza el error para manejarlo en doRegister
+      throw error;
     }
   }
-
 }
