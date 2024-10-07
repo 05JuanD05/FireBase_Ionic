@@ -12,8 +12,8 @@ import * as admin from 'firebase-admin';
 })
 export class FirebaseAdminModule { }
 
-export function initializeFirebaseAdmin(){
-  admin.initializeApp({
-    credential: admin.credential.cert('path/to/your/serviceAccountKey.json'),
-  })
-}
+// export function initializeFirebaseAdmin(){
+//   admin.initializeApp({
+//     credential: admin.credential.cert('path/to/your/serviceAccountKey.json'),
+//   })
+// }

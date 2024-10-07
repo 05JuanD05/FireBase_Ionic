@@ -33,7 +33,6 @@ export class RegistrerPage  {
       await this.loadService.show();
       console.log(this.registerForm.value);
       const { email, password, image } = this.registerForm.value;
-
       const userCreden: any = await this.authServer.registrar(email, password);
       const userId = userCreden.user?.uid;
 
@@ -48,7 +47,7 @@ export class RegistrerPage  {
         console.warn('Imagen no seleccionada por el usuario registrado');
       }
 
-      await this.registerUsers(userId, email, imageUrl); // Aqui se manda esos 3 datos al FireStore
+      await this.registerUsers(userId, email, imageUrl); // Aqui se manda los 3 datos al la BD de FireStore
 
       this.toastMsj.mesajeToast('Registro Exitoso, puede ir a loguearse.', 'success');
       await this.loadService.dismiss();
@@ -68,9 +67,6 @@ export class RegistrerPage  {
       console.error('Error al registrarse:', error);
     }
   }
-
-
-
 
   public togglePassword(){
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
