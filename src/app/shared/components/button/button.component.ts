@@ -12,7 +12,7 @@ export class ButtonComponent {
 
   @Input({required: true}) value = "";
   @Input() type: ButtonType = "button";
-  @Input() color: colorButtonType = "success";
+  @Input() color: colorButtonType = "danger";
   @Input() disable = false;
 
   constructor() { }
