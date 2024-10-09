@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from 'src/app/shared/services/loading/loading.service';
@@ -7,13 +7,14 @@ import { ToastService } from 'src/app/shared/services/toast/toast.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { StorageService } from 'src/app/shared/services/storage/storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registrer',
   templateUrl: './registrer.page.html',
   styleUrls: ['./registrer.page.scss'],
 })
-export class RegistrerPage  {
+export class RegistrerPage implements OnInit {
   public image!: FormControl;
   public name!: FormControl;
   public lastName!: FormControl;
@@ -22,11 +23,25 @@ export class RegistrerPage  {
   public phone!: FormControl;
   public password!: FormControl;
   public registerForm!: FormGroup;
+  public id : string = "";
   public passwordType: 'text' | 'password' = 'password';
 
-  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService, private readonly navControl: NavController, private readonly toastMsj: ToastService, private readonly auth: AngularFireAuth, private readonly fires: AngularFirestore, private readonly storaService: StorageService) {
+  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService, 
+    private readonly navControl: NavController, private readonly toastMsj: ToastService, 
+    private readonly auth: AngularFireAuth, private readonly fires: AngularFirestore, 
+    private readonly storaService: StorageService, private readonly route: ActivatedRoute) {
     this.initForm();
   }
+
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if(this.id) this.fillFormForUpdate();
+    })
+  }
+
 
   public async doRegister() {
     try {
@@ -67,6 +82,25 @@ export class RegistrerPage  {
       console.error('Error al registrarse:', error);
     }
   }
+
+
+  public doUpdate(){
+    console.log(this.registerForm.value);
+  }
+
+
+  private async fillFormForUpdate() {
+    // Obtener la informacion del usuario
+    // Renderizarla
+    this.registerForm.removeControl("email");
+    this.registerForm.removeControl("password");
+    this.image.setValue(this.image);
+    this.name.setValue(this.name);
+    this.lastName.setValue(this.lastName);
+    this.age.setValue(this.age);
+    this.phone.setValue(this.phone);
+  }
+
 
   public togglePassword(){
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password'; //Esto es para mostrar y ocultar la password

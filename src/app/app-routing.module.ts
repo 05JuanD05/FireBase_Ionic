@@ -6,19 +6,20 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canActivate:[authGuard]
+    //canActivate:[authGuard]
   },
 
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule),
+    //canActivate:[authGuard]
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'registrer',
+    path: 'registrer/:id',
     loadChildren: () => import('./pages/registrer/registrer.module').then( m => m.RegistrerPageModule)
   },
   {

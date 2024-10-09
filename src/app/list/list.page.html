@@ -1,8 +1,8 @@
-<ion-content>
+<ion-content [fullscreen]="true">
   <ion-list>
-    <ion-card (click)="goToUpdate()">
+    <ion-card>
       <ion-card-header>
-        <ion-card-title>Update</ion-card-title>
+        <ion-card-title [routerLink]="['/registrer', id]">Update</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         Haz clic aquí para actualizar las tareas.
@@ -10,7 +10,5 @@
     </ion-card>
   </ion-list>
 
-  <ion-button expand="full" color="danger" (click)="logout()">
-    Logout
-  </ion-button>
+  <app-button (doClick)="logOut()" value="Log Out" color="danger"></app-button>
 </ion-content>
