@@ -9,10 +9,9 @@ ion-content {
     color: #fff;
     min-height: 100vh;
     overflow: hidden;
-    font-family: 'Kame', sans-serif; /* Te sugiero buscar una fuente similar o usar una propia */
+    font-family: 'Kame', sans-serif; 
   }
   
-  /* Estilos de la tarjeta */
   ion-card {
     background-color: rgba(255, 255, 255, 0.151);
     border-radius: 15px;
@@ -20,15 +19,14 @@ ion-content {
     padding: 20px;
     max-width: 400px;
     margin: auto;
-    border: 2px solid #f56c42; /* Color naranja inspirado en el traje de Goku */
+    border: 2px solid #f56c42;
   }
   
-  /* Estilos del contenido de la tarjeta */
+
   ion-card-content {
     text-align: left;
   }
   
-  /* Estilos del formulario */
   form {
     width: 100%;
   }
@@ -40,12 +38,12 @@ ion-content {
   app-input {
     --background: transparent;
     --placeholder-color: #f5f5f5;
-    --border-color: #f56c42; /* Color naranja */
+    --border-color: #f56c42; 
     color: #fff;
   }
   
   a {
-    color: #ffd700; /* Amarillo brillante inspirado en las esferas del dragón */
+    color: #ffd700; 
     text-decoration: underline;
     font-weight: bold;
   }
@@ -54,7 +52,6 @@ ion-content {
     color: #f56c42;
   }
   
-  /* Botón de Login */
   .app-button {
     padding: 10px 50px;
     text-align: center; 
@@ -66,7 +63,6 @@ ion-content {
     --background: linear-gradient(135deg, #ffd700 30%, #f56c42);
   }
   
-  /* Añadir un efecto de brillo al botón */
   .app-button::after {
     content: "";
     display: block;

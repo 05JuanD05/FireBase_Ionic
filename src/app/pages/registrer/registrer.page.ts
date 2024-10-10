@@ -84,21 +84,56 @@ export class RegistrerPage implements OnInit {
   }
 
 
-  public doUpdate(){
-    console.log(this.registerForm.value);
+  public async doUpdate() {
+    try {
+      await this.loadService.show();
+      const updatedData = this.registerForm.value;
+      await this.fires.collection('users').doc(this.id).update(updatedData);
+      this.toastMsj.mesajeToast('User updated successfully', 'success');
+      await this.loadService.dismiss();
+      this.navControl.navigateBack('/list');
+    } catch (error) {
+      console.error('Error updating user:', error);
+      this.toastMsj.mesajeToast('Error updating user', 'danger');
+      await this.loadService.dismiss();
+    }
   }
 
-
   private async fillFormForUpdate() {
-    // Obtener la informacion del usuario
-    // Renderizarla
-    this.registerForm.removeControl("email");
-    this.registerForm.removeControl("password");
-    this.image.setValue(this.image);
-    this.name.setValue(this.name);
-    this.lastName.setValue(this.lastName);
-    this.age.setValue(this.age);
-    this.phone.setValue(this.phone);
+    try {
+      // Obtener datos del usuario de Firestore
+      const userDoc = await this.fires.collection('users').doc(this.id).get().toPromise();
+      const userData = userDoc?.data() as { 
+        image?: string, 
+        name?: string, 
+        lastName?: string, 
+        age?: string | number, 
+        phone?: string 
+      } | undefined;
+  
+      if (userData) {
+        // Eliminar controles de email y password ya que no deben actualizarse
+        this.registerForm.removeControl("email");
+        this.registerForm.removeControl("password");
+  
+        // Actualizar controles del formulario con los datos del usuario
+        this.image.setValue(userData.image ?? '');
+        this.name.setValue(userData.name ?? '');
+        this.lastName.setValue(userData.lastName ?? '');
+        this.age.setValue(userData.age?.toString() ?? '');
+        this.phone.setValue(userData.phone ?? '');
+  
+        // Actualizar el valor del formulario
+        this.registerForm.updateValueAndValidity();
+      } else {
+        console.error('Datos de usuario no encontrados');
+        // Manejar el caso donde no se encuentran los datos del usuario
+        this.toastMsj.mesajeToast('Datos de usuario no encontrados', 'danger');
+      }
+    } catch (error) {
+      console.error('Error al obtener datos del usuario:', error);
+      this.toastMsj.mesajeToast('Error al obtener datos del usuario', 'danger');
+    }
   }
 
 

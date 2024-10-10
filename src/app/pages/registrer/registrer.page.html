@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-content>
-      <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+      <form [formGroup]="registerForm" (ngSubmit)="!id ? doRegister() : doUpdate()">
         <ion-row>
           <ion-col>
             <app-avatar [control]="image"></app-avatar>

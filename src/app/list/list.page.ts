@@ -21,11 +21,6 @@ export class ListPage implements OnInit {
     this.navCtrl.navigateForward("/login");
   }
 
-
-  // goToUpdate(){
-  //   this.navCtrl.navigateForward('/registrer');
-  // }
-
   async ngOnInit() {
     this.id = await this.authServ.getCurrentUid();
   }
