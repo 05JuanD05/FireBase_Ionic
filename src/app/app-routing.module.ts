@@ -6,13 +6,13 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    //canActivate:[authGuard]
+    canActivate:[authGuard]
   },
 
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule),
-    //canActivate:[authGuard]
+    canActivate:[authGuard]
   },
   {
     path: 'login',

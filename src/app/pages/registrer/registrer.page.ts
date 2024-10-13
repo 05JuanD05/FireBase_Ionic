@@ -87,8 +87,20 @@ export class RegistrerPage implements OnInit {
   public async doUpdate() {
     try {
       await this.loadService.show();
-      const updatedData = this.registerForm.value;
+      const updatedData = { ...this.registerForm.value };
+  
+      // La imagen ya debería ser una URL en este punto
+      if (updatedData.image && typeof updatedData.image === 'string') {
+        console.log('URL de imagen a actualizar:', updatedData.image);
+      } else {
+        console.log('No hay nueva imagen para actualizar');
+        delete updatedData.image;
+      }
+  
+      console.log('Datos a actualizar:', updatedData);
       await this.fires.collection('users').doc(this.id).update(updatedData);
+      console.log('Documento actualizado en Firestore');
+  
       this.toastMsj.mesajeToast('User updated successfully', 'success');
       await this.loadService.dismiss();
       this.navControl.navigateBack('/list');
@@ -117,7 +129,7 @@ export class RegistrerPage implements OnInit {
         this.registerForm.removeControl("password");
   
         // Actualizar controles del formulario con los datos del usuario
-        this.image.setValue(userData.image ?? '');
+        this.image.setValue(userData.image || '');
         this.name.setValue(userData.name ?? '');
         this.lastName.setValue(userData.lastName ?? '');
         this.age.setValue(userData.age?.toString() ?? '');
