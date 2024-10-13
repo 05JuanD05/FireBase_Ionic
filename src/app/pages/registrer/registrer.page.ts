@@ -26,10 +26,10 @@ export class RegistrerPage implements OnInit {
   public id : string = "";
   public passwordType: 'text' | 'password' = 'password';
 
-  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService, 
-    private readonly navControl: NavController, private readonly toastMsj: ToastService, 
-    private readonly auth: AngularFireAuth, private readonly fires: AngularFirestore, 
-    private readonly storaService: StorageService, private readonly route: ActivatedRoute) {
+  constructor(private readonly authServer: AuthService, private readonly loadService: LoadingService,
+    private readonly navControl: NavController, private readonly toastMsj: ToastService,
+    private readonly fires: AngularFirestore, private readonly storaService: StorageService,
+    private readonly route: ActivatedRoute) {
     this.initForm();
   }
 
@@ -103,26 +103,26 @@ export class RegistrerPage implements OnInit {
     try {
       // Obtener datos del usuario de Firestore
       const userDoc = await this.fires.collection('users').doc(this.id).get().toPromise();
-      const userData = userDoc?.data() as { 
-        image?: string, 
-        name?: string, 
-        lastName?: string, 
-        age?: string | number, 
-        phone?: string 
+      const userData = userDoc?.data() as {
+        image?: string,
+        name?: string,
+        lastName?: string,
+        age?: string | number,
+        phone?: string
       } | undefined;
-  
+
       if (userData) {
         // Eliminar controles de email y password ya que no deben actualizarse
         this.registerForm.removeControl("email");
         this.registerForm.removeControl("password");
-  
+
         // Actualizar controles del formulario con los datos del usuario
         this.image.setValue(userData.image ?? '');
         this.name.setValue(userData.name ?? '');
         this.lastName.setValue(userData.lastName ?? '');
         this.age.setValue(userData.age?.toString() ?? '');
         this.phone.setValue(userData.phone ?? '');
-  
+
         // Actualizar el valor del formulario
         this.registerForm.updateValueAndValidity();
       } else {

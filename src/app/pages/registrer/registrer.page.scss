@@ -1,17 +1,24 @@
+ion-content {
+  --background: url('https://th.bing.com/th/id/OIP.PRvxZnlUzrGOANMSG4E8HwAAAA?rs=1&pid=ImgDetMain') no-repeat center center fixed;
+  --background-size: 90% 90%;
+}
+
 ion-card {
-  --background: #4d06d1;
-  border-radius: 12px;
-  margin: 16px;
-  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.151);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  border: 2px solid #f00707;
 }
 
 ion-card-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Cambiado para alinear al lado izquierdo */
   justify-content: center;
 }
-
 
 ion-row {
   margin-bottom: 12px;
@@ -19,7 +26,7 @@ ion-row {
 
 ion-col {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Cambiado para alinear al lado izquierdo */
 }
 
 app-avatar {
@@ -30,7 +37,12 @@ app-avatar {
 }
 
 app-input {
-  width: 100%;
+  --background: transparent;
+  --placeholder-color: #f5f5f5;
+  --border-color: #f56c42;
+  color: #101010;
+  width: 100%; /* Para que el input ocupe el 100% del contenedor */
+  text-align: left; /* Alinear el texto dentro del input a la izquierda */
 }
 
 app-button {
@@ -51,9 +63,9 @@ app-button {
   }
 }
 
-// Boton eye
+// Botón eye
 .small-button {
-  --background: #4caf50;
+  --background: #f10707;
   --color: white;
   --padding: 4px 6px;
   --font-size: 12px;

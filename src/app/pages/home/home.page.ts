@@ -7,12 +7,12 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   taskForm: FormGroup;
   minDate: string;
   taskList: any[] = [];
   userCounter: number = 1;
-  editIndex: number | null = null;  
+  editIndex: number | null = null;
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {
     const today = new Date();
@@ -32,11 +32,6 @@ export class HomePage implements OnInit {
     this.taskList = storedTasks ? JSON.parse(storedTasks) : [];
   }
 
-
-  ngOnInit(): void {
-    
-  }
-
   onSubmit() {
     if (this.taskForm.valid) {
       const taskData = this.taskForm.value;
@@ -45,7 +40,7 @@ export class HomePage implements OnInit {
         const confirmEdit = window.confirm('Are you sure you want to edit this task?');
         if (confirmEdit) {
           this.taskList[this.editIndex] = { ...taskData, userId: this.taskList[this.editIndex].userId };
-          this.editIndex = null;  
+          this.editIndex = null;
         }
       } else {
         taskData.userId = `user-${this.userCounter}`;
@@ -62,20 +57,20 @@ export class HomePage implements OnInit {
   }
 
   onEditTask(index: number) {
-    const task = this.taskList[index]; 
+    const task = this.taskList[index];
     this.taskForm.setValue({
       title: task.title,
       description: task.description,
       date: task.date,
       done: task.done
     });
-    this.editIndex = index;  
+    this.editIndex = index;
   }
 
   onDeleteTask(index: number) {
     if (confirm('Are you sure you want to delete this task?')) {
-      this.taskList.splice(index, 1);  
-      localStorage.setItem('taskList', JSON.stringify(this.taskList));  
+      this.taskList.splice(index, 1);
+      localStorage.setItem('taskList', JSON.stringify(this.taskList));
     }
   }
 
