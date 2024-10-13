@@ -1,11 +1,10 @@
 ion-card {
-  --background: #0fd3f6;
+  --background: #4d06d1;
   border-radius: 12px;
   margin: 16px;
   padding: 16px;
 }
 
-/* Contenido del ion-card */
 ion-card-content {
   display: flex;
   flex-direction: column;
@@ -52,6 +51,7 @@ app-button {
   }
 }
 
+// Boton eye
 .small-button {
   --background: #4caf50;
   --color: white;

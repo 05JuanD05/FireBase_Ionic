@@ -1,0 +1,78 @@
+ion-content {
+    --background: url('https://i.pinimg.com/474x/5d/2a/24/5d2a2433e85d6f359885248a99616b13.jpg') no-repeat center center fixed;
+    --background-size: cover;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  /* El resto del CSS se mantiene igual */
+  ion-list {
+    background: transparent;
+    --ion-background-color: transparent;
+    --ion-item-background: transparent;
+    padding: 20px;
+  }
+  
+  ion-card {
+    background: rgba(28, 28, 36, 0.85);
+    border: 1px solid #4A90E2;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  ion-card-header {
+    background: rgba(74, 144, 226, 0.1);
+  }
+  
+  ion-card-title {
+    color: #4A90E2;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+  }
+  
+  ion-card-content {
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  app-button {
+    display: block;
+    margin: 20px auto;
+  }
+  
+  :host ::ng-deep app-button[color="danger"] {
+    --background: #E24A4A;
+    --color: white;
+    font-weight: bold;
+    height: 48px;
+    width: 200px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  @keyframes brillar {
+    0% { box-shadow: 0 0 5px #4A90E2; }
+    50% { box-shadow: 0 0 20px #4A90E2, 0 0 30px #4A90E2; }
+    100% { box-shadow: 0 0 5px #4A90E2; }
+  }
+  
+  ion-card:hover {
+    animation: brillar 2s infinite;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    ion-card {
+      margin: 10px;
+    }
+    
+    ion-card-title {
+      font-size: 20px;
+    }
+  }

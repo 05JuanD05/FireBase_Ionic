@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 
 type colorButtonType = "success" | "danger" | "warning" | "secondary" | "primary";
 type ButtonType = "button" | "submit";
@@ -12,9 +12,16 @@ export class ButtonComponent {
 
   @Input({required: true}) value = "";
   @Input() type: ButtonType = "button";
-  @Input() color: colorButtonType = "success";
+  @Input() color: colorButtonType = "danger";
   @Input() disable = false;
 
+  @Output() doClick = new EventEmitter<boolean>();
+
   constructor() { }
+
+
+  click(){
+    this.doClick.emit(true);
+  }
 
 }
