@@ -1,10 +1,8 @@
-ion-content {
-  --background: url('https://th.bing.com/th/id/OIP.PRvxZnlUzrGOANMSG4E8HwAAAA?rs=1&pid=ImgDetMain') no-repeat center center fixed;
-  --background-size: 90% 90%;
-}
-
 ion-card {
   background-color: rgba(255, 255, 255, 0.151);
+  background-image: url('https://pbs.twimg.com/media/F276S4oWUAEDOkt.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -13,10 +11,11 @@ ion-card {
   border: 2px solid #f00707;
 }
 
+
 ion-card-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Cambiado para alinear al lado izquierdo */
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -26,7 +25,7 @@ ion-row {
 
 ion-col {
   display: flex;
-  justify-content: flex-start; /* Cambiado para alinear al lado izquierdo */
+  justify-content: flex-start;
 }
 
 app-avatar {
@@ -41,8 +40,8 @@ app-input {
   --placeholder-color: #f5f5f5;
   --border-color: #f56c42;
   color: #101010;
-  width: 100%; /* Para que el input ocupe el 100% del contenedor */
-  text-align: left; /* Alinear el texto dentro del input a la izquierda */
+  width: 100%;
+  text-align: left;
 }
 
 app-button {
@@ -63,10 +62,10 @@ app-button {
   }
 }
 
-// Botón eye
-.small-button {
-  --background: #f10707;
-  --color: white;
-  --padding: 4px 6px;
-  --font-size: 12px;
-}
+// // Botón eye
+// .small-button {
+//   --background: #f10707;
+//   --color: white;
+//   --padding: 4px 6px;
+//   --font-size: 12px;
+// }
