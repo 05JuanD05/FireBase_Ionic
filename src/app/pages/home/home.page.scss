@@ -1,6 +1,7 @@
 ion-content {
-  --background: #fdbb30; 
+  --background: url('https://i.pinimg.com/originals/e9/cd/53/e9cd5321ce5805f9d3ed04e53555cf94.jpg') no-repeat center center / cover;
 }
+
 
 ion-card {
   --ion-card-background-color: #fff;
@@ -35,7 +36,7 @@ ion-input {
 }
 
 ion-button {
-  --background: #ff4b00; 
+  --background: #3700ff; 
   --color: white;
   --border-radius: 8px;
   font-weight: bold;
@@ -44,7 +45,7 @@ ion-button {
 }
 
 ion-button:focus, ion-button:hover {
-  --background: #d73b00; 
+  --background: #0076d7; 
 }
 
 ion-list {
