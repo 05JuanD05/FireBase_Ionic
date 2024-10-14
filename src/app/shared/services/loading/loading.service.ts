@@ -5,19 +5,27 @@ import { LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class LoadingService {
+  private loading: HTMLIonLoadingElement | null = null;
 
   constructor(private readonly loadControl: LoadingController) { }
 
-  public async show(){
-    const load = await this.loadControl.create({
-      message:'Cargando...',
-      spinner:'bubbles',
-      duration: 5000
+  public async show(message: string = 'Cargando...') {
+    // Asegúrate de que cualquier loading existente se cierre primero
+    await this.dismiss();
+
+    this.loading = await this.loadControl.create({
+      message: message,
+      spinner: 'bubbles',
+      // Removemos la duración para que no se cierre automáticamente
     });
-    await load.present();
+
+    await this.loading.present();
   }
 
-  public async dismiss(){
-    await this.loadControl.dismiss();
+  public async dismiss() {
+    if (this.loading) {
+      await this.loading.dismiss();
+      this.loading = null;
+    }
   }
 }
