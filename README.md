@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Integrantes del grupo
 
 - **JuanD. Bertel Meriño**
@@ -6,6 +5,3 @@
 - **IvanD. Gloria**
 - **Edward Gomez**
 - **Luis Garavito**
-=======
-
->>>>>>> Funcionalidades
