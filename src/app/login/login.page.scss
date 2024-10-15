@@ -1,31 +1,22 @@
-/* Estilos generales */
-ion-content {
-    --background: url('https://i.pinimg.com/originals/aa/30/2d/aa302d1ce298b56068dd44a532c7159d.jpg') no-repeat center center fixed;
-    --background-size: 90% 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: #fff;
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: 'Kame', sans-serif;
-  }
 
-  ion-card {
-    background-color: rgba(255, 255, 255, 0.151);
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    max-width: 400px;
-    margin: auto;
-    border: 2px solid #f56c42;
-  }
+ion-card {
+  background-color: rgba(255, 255, 255, 0.151);
+  background-image: url('https://i.pinimg.com/736x/14/93/20/1493201a782052c49955b45d47aa7b1c.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  border: 2px solid #000000;
+}
 
 
   ion-card-content {
     text-align: left;
   }
+
 
   form {
     width: 100%;
@@ -51,6 +42,7 @@ ion-content {
   a:hover {
     color: #f56c42;
   }
+
 
   .app-button {
     padding: 10px 50px;
