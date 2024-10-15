@@ -48,12 +48,9 @@ ion-button {
   --border-radius: 8px;
   font-weight: bold;
   text-transform: uppercase;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+
 }
 
-ion-button:focus, ion-button:hover {
-  --background: #0076d7; 
-}
 
 ion-list {
   margin: 20px;

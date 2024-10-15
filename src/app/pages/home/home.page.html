@@ -32,17 +32,21 @@
   </ion-card>
 
   <ion-title size="large">Tasks List</ion-title>
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let task of taskList; let i = index" class="task-item">
+        <ion-label>
+          <h2>{{ task.title }}</h2>
+          <p>{{ task.description }}</p>
+          <p>Date: {{ task.date }}</p>
+          <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
+        </ion-label>
+        <ion-button (click)="onEditTask(i)">Edit</ion-button>
+        <ion-button color="danger" (click)="onDeleteTask(i)">Delete</ion-button>
+      </ion-item>
+    </ion-list>
 
-  <ion-list>
-    <ion-item *ngFor="let task of taskList; let i = index" class="task-item">
-      <ion-label>
-        <h2>{{ task.title }}</h2>
-        <p>{{ task.description }}</p>
-        <p>Date: {{ task.date }}</p>
-        <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
-      </ion-label>
-      <ion-button (click)="onEditTask(i)">Edit</ion-button>
-      <ion-button color="danger" (click)="onDeleteTask(i)">Delete</ion-button>
-    </ion-item>
-  </ion-list>
+
+
+</ion-card>
 </ion-content>
