@@ -1,112 +1,60 @@
-// General styles for the whole page
-ion-content {
-  background-color: #f0f0f0; // Fondo claro para mayor contraste
-  color: #282828; // Texto oscuro para legibilidad
-  font-family: 'Roboto', sans-serif;
-}
-
-// Tarjeta de registro
 ion-card {
-  background-color: #ffcc00; // Fondo amarillo inspirado en los tonos Saiyan
+  --background: #0fd3f6;
   border-radius: 12px;
-  border: 2px solid #ff4500; // Naranja del uniforme de Goku
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); // Sombra con impacto estilo Dragon Ball Z
-  animation: powerGlow 3s ease-in-out infinite;
+  margin: 16px;
+  padding: 16px;
 }
 
+/* Contenido del ion-card */
 ion-card-content {
-  padding: 20px;
-  text-align: center;
-  background-color: #fff; // Fondo de contenido blanco
-}
-
-// Títulos inspirados en DBZ
-h1, ion-title {
-  font-family: 'Saiyan Sans', sans-serif; // Fuente personalizada Dragon Ball Z
-  font-size: 2.5rem;
-  color: #ff4500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 4px #000;
-}
-
-// Estilos de los inputs del formulario
-app-input ion-input {
-  background-color: #fff;
-  border: 2px solid #ff4500; // Bordes naranjas
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 1.2rem;
-  color: #000;
-}
-
-app-input ion-label {
-  color: #ff4500; // Naranja de Goku
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-}
-
-ion-button {
-  background-color: #00bfff; // Azul de la energía Ki
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  border-radius: 6px;
-  border: 2px solid #282828;
-  padding: 12px;
-  transition: all 0.3s ease-in-out;
-}
-
-ion-button:hover {
-  background-color: #ff4500; // Cambia a naranja al hacer hover
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); // Sombra más intensa al pasar sobre el botón
-}
-
-// Estilos para el botón de cambiar la visibilidad de la contraseña
-ion-button.small-button {
-  background-color: #ff4500;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-// Estilos de los avatares
+
+ion-row {
+  margin-bottom: 12px;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+}
+
 app-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-app-avatar img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  border: 2px solid #ff4500;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin-bottom: 16px;
 }
 
-// Animación de energía (aura)
-@keyframes powerGlow {
-  0% {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+app-input {
+  width: 100%;
+}
+
+app-button {
+  --background: #3880ff;
+  --border-radius: 8px;
+  --padding: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  ion-card {
+    max-width: 600px;
+    margin: auto;
   }
-  50% {
-    box-shadow: 0 4px 20px rgba(255, 69, 0, 0.6);
-  }
-  100% {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  ion-col {
+    max-width: 500px;
   }
 }
 
-ion-card {
-  animation: powerGlow 2s infinite alternate; // Efecto de resplandor de poder
+.small-button {
+  --background: #4caf50;
+  --color: white;
+  --padding: 4px 6px;
+  --font-size: 12px;
 }
