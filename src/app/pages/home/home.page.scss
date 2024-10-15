@@ -1,17 +1,25 @@
 ion-content {
-  --background: #fdbb30; /* Fondo naranja brillante */
+  --background: url('https://i.pinimg.com/originals/e9/cd/53/e9cd5321ce5805f9d3ed04e53555cf94.jpg') no-repeat center center / cover;
 }
+
 
 ion-card {
   --ion-card-background-color: #fff;
-  --ion-text-color: #000; /* Texto negro en las tarjetas */
-  border: 3px solid #f08c00; /* Borde naranja oscuro */
+  --ion-text-color: #000; 
+  border: 3px solid #f08c00; 
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra oscura */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
 ion-card-title {
-  color: #ff4b00; /* Naranja intenso */
+  color: #ff4b00; 
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+ion-title{
+  color:#ef7001;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -19,11 +27,11 @@ ion-card-title {
 }
 
 ion-card-content {
-  color: #4c4c4c; /* Gris oscuro */
+  color: #4c4c4c; 
 }
 
 ion-item {
-  --background: #4b4cff; /* Azul Saiyan */
+  --background: #4b4cff; 
   color: white;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -35,24 +43,23 @@ ion-input {
 }
 
 ion-button {
-  --background: #ff4b00; /* Naranja brillante */
+  --background: #3700ff; 
   --color: white;
   --border-radius: 8px;
   font-weight: bold;
   text-transform: uppercase;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Sombra intensa */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
 }
 
 ion-button:focus, ion-button:hover {
-  --background: #d73b00; /* Naranja más oscuro al pasar el ratón */
+  --background: #0076d7; 
 }
 
 ion-list {
   margin: 20px;
 }
 
-/* Cambiar el color del texto de las tareas a blanco */
 .task-item ion-label h2,
 .task-item ion-label p {
-  color: white; /* Color blanco para la lista de tareas */
+  color: white; 
 }

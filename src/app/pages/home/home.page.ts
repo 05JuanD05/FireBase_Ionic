@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { TaskService } from 'src/app/shared/services/tareas/task.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   taskForm: FormGroup;
   minDate: string;
   taskList: any[] = [];
   userCounter: number = 1;
-  editIndex: number | null = null;  // To handle the index of the task being edited
+  editIndex: number | null = null;  
+  userId!: string;
 
-  constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {
+  constructor(
+    private formBuilder: FormBuilder, 
+    private navCtrl: NavController,
+    private taskService: TaskService,
+    private afAuth: AngularFireAuth
+  ) {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
-
-    const storedCounter = localStorage.getItem('userCounter');
-    this.userCounter = storedCounter ? parseInt(storedCounter) : 1;
 
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -27,56 +32,65 @@ export class HomePage {
       date: ['', Validators.required],
       done: [false]
     });
-
-    const storedTasks = localStorage.getItem('taskList');
-    this.taskList = storedTasks ? JSON.parse(storedTasks) : [];
   }
 
-  onSubmit() {
+  ngOnInit(): void {
+    // Obtener el userId del usuario autenticado
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+
+        // Cargar las tareas del usuario desde Firebase
+        this.loadTasks();
+      }
+    });
+  }
+
+  loadTasks() {
+    this.taskService.getTasks(this.userId).subscribe(tasks => {
+      this.taskList = tasks;
+    });
+  }
+
+  async onSubmit() {
     if (this.taskForm.valid) {
-      const taskData = this.taskForm.value;
+      const taskData = { 
+        ...this.taskForm.value, 
+        userId: this.userId 
+      };
 
       if (this.editIndex !== null) {
-        // Show confirmation message before applying changes
         const confirmEdit = window.confirm('Are you sure you want to edit this task?');
         if (confirmEdit) {
-          // If user confirms, apply changes
-          this.taskList[this.editIndex] = { ...taskData, userId: this.taskList[this.editIndex].userId };
-          this.editIndex = null;  // Clear the edit index after updating
+          // Actualizar tarea existente en Firebase
+          const taskId = this.taskList[this.editIndex].id;
+          await this.taskService.updateTask(taskId, taskData);
+          this.editIndex = null;
         }
       } else {
-        // Create a new task if not in edit mode
-        taskData.userId = `user-${this.userCounter}`;
-        this.userCounter++;
-        localStorage.setItem('userCounter', this.userCounter.toString());
-
-        // Add the new task to the list
-        this.taskList.push(taskData);
+        // Crear una nueva tarea en Firebase
+        await this.taskService.createTask(taskData);
       }
 
-      // Save the updated list in localStorage
-      localStorage.setItem('taskList', JSON.stringify(this.taskList));
-
-      // Reset the form
       this.taskForm.reset({ done: false });
     }
   }
 
   onEditTask(index: number) {
-    const task = this.taskList[index]; // Get the task to edit
+    const task = this.taskList[index]; 
     this.taskForm.setValue({
       title: task.title,
       description: task.description,
       date: task.date,
       done: task.done
     });
-    this.editIndex = index;  // Save the index of the task to edit
+    this.editIndex = index;
   }
 
-  onDeleteTask(index: number) {
+  async onDeleteTask(index: number) {
     if (confirm('Are you sure you want to delete this task?')) {
-      this.taskList.splice(index, 1);  // Remove the task from the list
-      localStorage.setItem('taskList', JSON.stringify(this.taskList));  // Update localStorage
+      const taskId = this.taskList[index].id;
+      await this.taskService.deleteTask(taskId);
     }
   }
 

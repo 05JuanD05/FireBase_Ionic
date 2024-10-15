@@ -39,14 +39,10 @@
         <h2>{{ task.title }}</h2>
         <p>{{ task.description }}</p>
         <p>Date: {{ task.date }}</p>
-        <p>User ID: {{ task.userId }}</p>
         <p>Done: {{ task.done ? 'Yes' : 'No' }}</p>
       </ion-label>
-      <ion-button (click)="onEditTask(i)">Edit</ion-button>  <!-- Botón de editar -->
-      <ion-button color="danger" (click)="onDeleteTask(i)">Delete</ion-button>  <!-- Botón de eliminar -->
+      <ion-button (click)="onEditTask(i)">Edit</ion-button>
+      <ion-button color="danger" (click)="onDeleteTask(i)">Delete</ion-button>
     </ion-item>
   </ion-list>
-  
-  
-  
 </ion-content>
